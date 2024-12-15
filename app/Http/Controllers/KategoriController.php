@@ -13,33 +13,39 @@ class KategoriController extends Controller
         return view('admin.kategoris.index', compact('kategoris'));
     }
 
+    public function navbar()
+    {
+        // Data untuk navbar
+        $kategoris = Kategori::all();
+        return view('layout', compact('kategoris'));
+    }
     public function create()
     {
         return view('admin.kategoris.create');
     }
 
     public function store(Request $request)
-{
-    try {
-        // Validasi dan simpan kategori
-        $request->validate([
-            'nama' => 'required|string|max:255',
-        ]);
+    {
+        try {
+            // Validasi dan simpan kategori
+            $request->validate([
+                'nama' => 'required|string|max:255',
+            ]);
 
-        // Simpan data kategori
-        Kategori::create([
-            'nama' => $request->nama,
-        ]);
+            // Simpan data kategori
+            Kategori::create([
+                'nama' => $request->nama,
+            ]);
 
-        // Kirimkan pesan sukses dan redirect ke halaman index
-        return redirect()->route('kategoris.create')->with('success', 'Kategori berhasil ditambahkan!');
-    } catch (\Exception $e) {
-        // Kirimkan pesan error jika ada kesalahan
-        return redirect()->route('kategoris.create')->with('error', 'Terjadi kesalahan, kategori gagal ditambahkan.');
+            // Kirimkan pesan sukses dan redirect ke halaman index
+            return redirect()->route('kategoris.create')->with('success', 'Kategori berhasil ditambahkan!');
+        } catch (\Exception $e) {
+            // Kirimkan pesan error jika ada kesalahan
+            return redirect()->route('kategoris.create')->with('error', 'Terjadi kesalahan, kategori gagal ditambahkan.');
+        }
     }
-}
 
-    
+
 
     public function edit(Kategori $kategori)
     {
@@ -47,13 +53,13 @@ class KategoriController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    $kategori = Kategori::findOrFail($id);
-    $kategori->nama = $request->nama;
-    $kategori->save();
+    {
+        $kategori = Kategori::findOrFail($id);
+        $kategori->nama = $request->nama;
+        $kategori->save();
 
-    return redirect()->route('kategoris.index')->with('success', 'Kategori Berhasil Diperbarui');
-}
+        return redirect()->route('kategoris.index')->with('success', 'Kategori Berhasil Diperbarui');
+    }
 
 
     public function destroy(Kategori $kategori)

@@ -73,13 +73,12 @@
                             <!-- Home -->
                             <a id="companyMegaMenu" class="hs-mega-menu-invoker nav-link toggle"
                                 href="{{ route('index') }}" role="button" aria-expanded="false"
-                                style="min-width: 6rem;">Home</a>
+                                style="min-width: 6rem;">Beranda</a>
                             <!-- End Home -->
 
                             <li class="hs-has-mega-menu nav-item">
                                 <a id="landingsMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle "
-                                    aria-current="page" href="#" role="button" aria-expanded="false">New
-                                    Experience</a>
+                                    aria-current="page" href="#" role="button" aria-expanded="false">Ruang Belajar</a>
 
                                 <!-- Mega Menu -->
                                 <div class="hs-mega-menu dropdown-menu w-100" aria-labelledby="landingsMegaMenu"
@@ -122,35 +121,20 @@
                                             <div class="navbar-dropdown-menu-inner">
                                                 <div class="row">
                                                     <div class="col-sm mb-3 mb-sm-0">
-                                                        <span class="dropdown-header">Experience</span>
-                                                        <a class="dropdown-item "
-                                                            href="landing-classic-corporate.html">Digital Marketing</a>
-                                                        <a class="dropdown-item "
-                                                            href="landing-classic-analytics.html">Software Development
-                                                            <span
-                                                                class="badge bg-primary rounded-pill ms-1">Hot</span></a>
-                                                        <a class="dropdown-item "
-                                                            href="landing-classic-studio.html">Blogger</a>
-                                                        <a class="dropdown-item "
-                                                            href="landing-classic-marketing.html">Brand Ambassador</a>
-                                                        <a class="dropdown-item "
-                                                            href="landing-classic-advertisement.html">Advertisement</a>
-                                                        <a class="dropdown-item "
-                                                            href="landing-classic-consulting.html">Consulting</a>
+                                                        <span class="dropdown-header">Belajar</span>
+                                                        @foreach ($kategoris as $kategori)
+                                                        <a class="dropdown-item" href="landing-classic-corporate.html">{{ $kategori->nama }}</a>
+                                                    @endforeach
                                                     </div>
                                                     <!-- End Col -->
 
+                                                    <!-- Beda Crud -->
                                                     <div class="col-sm">
                                                         <div class="mb-3">
                                                             <span class="dropdown-header">Courses</span>
-                                                            <a class="dropdown-item "
-                                                                href="landing-app-ui-kit.html">Design</a>
-                                                            <a class="dropdown-item" href="landing-app-saas.html">Web
-                                                                Develop</a>
-                                                            <a class="dropdown-item "
-                                                                href="landing-app-workflow.html">Marketing</a>
-                                                            <a class="dropdown-item "
-                                                                href="landing-app-payment.html">Development</a>
+                                                            @foreach ($kategoris as $kategori)
+                                                            <a class="dropdown-item" href="landing-classic-corporate.html">{{ $kategori->nama }}</a>
+                                                        @endforeach
                                                         </div>
                                                     </div>
                                                     <!-- End Col -->
@@ -168,11 +152,11 @@
                             <!-- Account -->
                             
                                 <a id="accountMegaMenu" class="hs-mega-menu-invoker nav-link toggle "
-                                    href="{{ route('about') }}" role="button" aria-expanded="false">About Us</a>
+                                    href="{{ route('about') }}" role="button" aria-expanded="false">Tentang Kami</a>
 
                             <li class="hs-has-sub-menu nav-item">
                                 <a id="blogMegaMenu" class="hs-mega-menu-invoker nav-link dropdown-toggle "
-                                     role="button" aria-expanded="false">Profile</a>
+                                     role="button" aria-expanded="false">Profil</a>
                                 <div class="hs-sub-menu dropdown-menu" aria-labelledby="blogMegaMenu"
                                     style="min-width: 14rem;">
                       
@@ -199,7 +183,9 @@
                             <li class="">
                                 <a id="portfolioMegaMenu" class="btn btn-primary btn-transition"
                                     href="#" role="button" aria-expanded="false"
-                                    style="min-width: 1rem;">Contact</a>
+                                    style="min-width: 1rem;">Hubungi</a>
+
+                                    
                             </li>
 
 
@@ -529,6 +515,9 @@
      }'>
         <i class="bi-chevron-up"></i>
     </a>
+
+
+   
     <!-- ========== END SECONDARY CONTENTS ========== -->
 
     <!-- JS Implementing Plugins -->

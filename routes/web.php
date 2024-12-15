@@ -13,6 +13,8 @@ use App\Http\Controllers\admin\Benefit\benefitController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MateriController;
 
+use App\Http\Controllers\admin\MitraController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,12 +41,24 @@ Route::middleware(['auth:admin'])->group(function () {
     // Route::get('/store', [App\Http\Controllers\admin\KonfigurasiController::class, 'store'])->name('store');
     // Route::post('/store', [App\Http\Controllers\admin\KonfigurasiController::class, 'store'])->name('store');
     Route::resource('/dashboard/konfigurasi', App\Http\Controllers\admin\KonfigurasiController::class);
-    Route::resource('/dashboard/konfigurasi', App\Http\Controllers\admin\MitraController::class);
+
+    Route::resource('/dashboard/mitra', MitraController::class)->names([
+        'index' => 'mitra.index',
+        'create' => 'mitra.create',
+        'store' => 'mitra.store',
+        'edit' => 'mitra.edit',
+        'update' => 'mitra.update',
+        'destroy' => 'mitra.destroy',
+    ]);
+
+
+
     Route::resource('benefit', benefitController::class);
     Route::resource('/about', App\Http\Controllers\admin\AboutController::class);
     Route::resource('kategoris', KategoriController::class);
     Route::get('/generate-report', [App\Http\Controllers\admin\ReportController::class, 'generateReport'])->name('report.generate');
 });
+
 
 
 
